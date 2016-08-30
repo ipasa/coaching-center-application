@@ -1,0 +1,21 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password: '123'
+  socket: /var/run/mysqld/mysqld.sock
+
+development:
+  <<: *default
+  database: coaching-center_development
+
+test:
+  <<: *default
+  database: coaching-center_test
+
+production:
+  <<: *default
+  database: coaching-center_production
+  username: coaching-center
+  password: <%= ENV['COACHING-CENTER_DATABASE_PASSWORD'] %>
